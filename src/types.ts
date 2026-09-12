@@ -1,10 +1,26 @@
-export type ViewType = 'overview' | 'branding' | 'films' | 'events' | 'roadmap' | 'estimator';
+export type ViewType = 'overview' | 'about' | 'branding' | 'films' | 'events' | 'roadmap' | 'estimator';
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  badge: string;
+  image: string;
+  isFounder?: boolean;
+  bio: string;
+  disciplines: string[];
+  contact?: {
+    email?: string;
+    phone?: string;
+    social?: string;
+  };
+}
 
 export interface BrandingProject {
   id: string;
   number: string;
   title: string;
-  category: 'Identity' | 'Typography' | 'Packaging' | 'Rebrand' | 'Strategy' | 'Digital';
+  category: 'Identity' | 'Typography' | 'Packaging' | 'Rebrand' | 'Strategy' | 'Digital' | 'Motion & Reels' | 'Spatial';
   client: string;
   year: string;
   image: string;
@@ -12,6 +28,8 @@ export interface BrandingProject {
   accentColor: string;
   summary: string;
   metrics: string;
+  videoUrl?: string;
+  duration?: string;
   deliverables: string[];
   challenge: string;
   solution: string;
@@ -30,6 +48,8 @@ export interface FilmProject {
   aspect: string;
   thumbnail: string;
   videoPreviewUrl: string;
+  youtubeId: string;
+  embedUrl: string;
   logline: string;
   director: string;
   dop: string;

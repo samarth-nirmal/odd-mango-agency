@@ -41,6 +41,24 @@ export const HeaderTicker: React.FC<HeaderTickerProps> = ({ onOpenEstimator, onO
               <span className="text-neutral-400">// PUNE HQ [IST {timePune || 'LIVE'}]</span>
             </span>
             <span className="text-neutral-500">|</span>
+            <a
+              href="https://www.instagram.com/oddmango.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#FFDE99] hover:underline font-bold"
+            >
+              IG: @oddmango.in
+            </a>
+            <span className="text-neutral-500">•</span>
+            <a
+              href="https://www.youtube.com/@ODDMANGOFILMS"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#FF4400] hover:underline font-bold"
+            >
+              YT: @ODDMANGOFILMS
+            </a>
+            <span className="text-neutral-500">|</span>
             <span className="text-[#FFDE99] font-medium">AVAILABLE FOR Q3 / Q4 PRODUCTION</span>
             <button 
               onClick={() => { soundFx.playClick(500); onOpenContact(); }} 
@@ -49,9 +67,11 @@ export const HeaderTicker: React.FC<HeaderTickerProps> = ({ onOpenEstimator, onO
               [BOOK NOW ➔]
             </button>
             <span className="text-neutral-500">|</span>
-            <span className="text-neutral-300">WORLDWIDE DIGITAL DELIVERY & CINEMA COMMISSIONING</span>
+            <a href="mailto:oddmangomedia@gmail.com" className="text-neutral-300 hover:text-white underline">
+              oddmangomedia@gmail.com
+            </a>
             <span className="text-neutral-500">|</span>
-            <span className="text-[#FF6B9E] font-medium">NEW CASE STUDY: KURA CEREMONIAL MATCHA ARCHIVE</span>
+            <span className="text-neutral-400">CALL: +91 93706 02824 / 83298 34842</span>
             <span className="text-neutral-500">|</span>
           </div>
 
@@ -63,6 +83,24 @@ export const HeaderTicker: React.FC<HeaderTickerProps> = ({ onOpenEstimator, onO
               <span className="text-neutral-400">// PUNE HQ [IST {timePune || 'LIVE'}]</span>
             </span>
             <span className="text-neutral-500">|</span>
+            <a
+              href="https://www.instagram.com/oddmango.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#FFDE99] hover:underline font-bold"
+            >
+              IG: @oddmango.in
+            </a>
+            <span className="text-neutral-500">•</span>
+            <a
+              href="https://www.youtube.com/@ODDMANGOFILMS"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#FF4400] hover:underline font-bold"
+            >
+              YT: @ODDMANGOFILMS
+            </a>
+            <span className="text-neutral-500">|</span>
             <span className="text-[#FFDE99] font-medium">AVAILABLE FOR Q3 / Q4 PRODUCTION</span>
             <button 
               onClick={() => { soundFx.playClick(500); onOpenContact(); }} 
@@ -71,9 +109,11 @@ export const HeaderTicker: React.FC<HeaderTickerProps> = ({ onOpenEstimator, onO
               [BOOK NOW ➔]
             </button>
             <span className="text-neutral-500">|</span>
-            <span className="text-neutral-300">WORLDWIDE DIGITAL DELIVERY & CINEMA COMMISSIONING</span>
+            <a href="mailto:oddmangomedia@gmail.com" className="text-neutral-300 hover:text-white underline">
+              oddmangomedia@gmail.com
+            </a>
             <span className="text-neutral-500">|</span>
-            <span className="text-[#FF6B9E] font-medium">NEW CASE STUDY: KURA CEREMONIAL MATCHA ARCHIVE</span>
+            <span className="text-neutral-400">CALL: +91 93706 02824 / 83298 34842</span>
             <span className="text-neutral-500">|</span>
           </div>
         </div>

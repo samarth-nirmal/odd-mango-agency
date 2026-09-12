@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ViewType } from '../types';
 import { soundFx } from '../utils/audio';
-import { Menu, X, ArrowUpRight, Flame, Film, Compass, Calculator } from 'lucide-react';
+import { STUDIO_CONTACT } from '../data/agencyData';
+import { Menu, X, ArrowUpRight, Instagram, Youtube, Phone, Mail } from 'lucide-react';
 
 interface HeaderNavProps {
   currentView: ViewType;
@@ -25,6 +26,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
 
   const navItems: { view: ViewType; label: string }[] = [
     { view: 'overview', label: 'OVERVIEW' },
+    { view: 'about', label: 'ABOUT US' },
     { view: 'branding', label: 'BRANDING' },
     { view: 'films', label: 'FILMS' },
     { view: 'events', label: 'EVENTS' },
@@ -97,14 +99,39 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
             );
           })}
 
-          <button
-            id="nav-btn-initiate-project"
-            onClick={() => { soundFx.playSuccess(); onOpenContact(); }}
-            className="flex items-center gap-1.5 px-4 py-2 bg-[#FF4400] text-white border-2 border-black rounded-xl text-xs font-mono-custom font-extrabold hover:bg-black transition-colors ml-2 cursor-pointer shadow-brutal-sm"
-          >
-            <span>START PROJECT</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </button>
+          {/* Desktop Socials & Action Button */}
+          <div className="flex items-center gap-1.5 ml-1">
+            <a
+              href={STUDIO_CONTACT.instagram.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 border-2 border-black rounded-xl hover:bg-black hover:text-[#FFDE99] transition-colors cursor-pointer text-black"
+              title="Follow Odd Mango on Instagram (@oddmango.in)"
+              aria-label="Instagram"
+            >
+              <Instagram className="w-3.5 h-3.5" />
+            </a>
+
+            <a
+              href={STUDIO_CONTACT.youtube.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 border-2 border-black rounded-xl hover:bg-[#FF0000] hover:text-white transition-colors cursor-pointer text-black"
+              title="Subscribe on YouTube (@ODDMANGOFILMS)"
+              aria-label="YouTube"
+            >
+              <Youtube className="w-3.5 h-3.5" />
+            </a>
+
+            <button
+              id="nav-btn-initiate-project"
+              onClick={() => { soundFx.playSuccess(); onOpenContact(); }}
+              className="flex items-center gap-1.5 px-4 py-2 bg-[#FF4400] text-white border-2 border-black rounded-xl text-xs font-mono-custom font-extrabold hover:bg-black transition-colors ml-1 cursor-pointer shadow-brutal-sm"
+            >
+              <span>START PROJECT</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </nav>
       </div>
 
@@ -162,6 +189,51 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
                 <span>START PROJECT INTAKE</span>
                 <ArrowUpRight className="w-4 h-4" />
               </button>
+
+              {/* Mobile Direct Connect Box */}
+              <div className="mt-2 p-3 bg-neutral-100 border-2 border-black rounded-xl space-y-2.5 font-mono-custom text-xs">
+                <div className="text-[10px] uppercase font-bold text-neutral-500">
+                  CONNECT WITH ODD MANGO
+                </div>
+                <div className="flex items-center gap-2">
+                  <Mail className="w-3.5 h-3.5 text-[#FF4400] shrink-0" />
+                  <a href={`mailto:${STUDIO_CONTACT.email}`} className="font-bold underline truncate">
+                    {STUDIO_CONTACT.email}
+                  </a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Phone className="w-3.5 h-3.5 text-[#00D084] shrink-0" />
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <a href={`tel:${STUDIO_CONTACT.phone1.tel}`} className="font-bold underline">
+                      {STUDIO_CONTACT.phone1.display}
+                    </a>
+                    <span>/</span>
+                    <a href={`tel:${STUDIO_CONTACT.phone2.tel}`} className="font-bold underline">
+                      {STUDIO_CONTACT.phone2.display}
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 pt-1 border-t border-neutral-300">
+                  <a
+                    href={STUDIO_CONTACT.instagram.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-1.5 px-2 bg-black text-white rounded-lg font-bold flex items-center justify-center gap-1.5 text-[11px]"
+                  >
+                    <Instagram className="w-3.5 h-3.5 text-[#FFDE99]" />
+                    <span>INSTAGRAM</span>
+                  </a>
+                  <a
+                    href={STUDIO_CONTACT.youtube.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-1.5 px-2 bg-[#FF0000] text-white rounded-lg font-bold flex items-center justify-center gap-1.5 text-[11px]"
+                  >
+                    <Youtube className="w-3.5 h-3.5 text-white" />
+                    <span>YOUTUBE</span>
+                  </a>
+                </div>
+              </div>
             </div>
           </motion.div>
         )}

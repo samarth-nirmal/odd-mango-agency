@@ -10,12 +10,13 @@ import { FilmsView } from './components/FilmsView';
 import { EventsView } from './components/EventsView';
 import { RoadmapView } from './components/RoadmapView';
 import { ScopeEstimatorView } from './components/ScopeEstimatorView';
+import { AboutUsView } from './components/AboutUsView';
 import { ContactFooter } from './components/ContactFooter';
 import { CaseStudyModal } from './components/CaseStudyModal';
 import { VideoPlayerModal } from './components/VideoPlayerModal';
 import { FILM_PROJECTS } from './data/agencyData';
 
-const VALID_VIEWS: ViewType[] = ['overview', 'branding', 'films', 'events', 'roadmap', 'estimator'];
+const VALID_VIEWS: ViewType[] = ['overview', 'about', 'branding', 'films', 'events', 'roadmap', 'estimator'];
 
 const getViewFromHash = (): ViewType => {
   const raw = window.location.hash.replace('#', '').toLowerCase();
@@ -102,6 +103,13 @@ export default function App() {
           <OverviewView
             onSelectView={handleSelectView}
             onOpenVideoModal={handleOpenVideoModal}
+            onOpenContact={scrollToContact}
+          />
+        )}
+
+        {currentView === 'about' && (
+          <AboutUsView
+            onSelectView={handleSelectView}
             onOpenContact={scrollToContact}
           />
         )}

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { soundFx } from '../utils/audio';
-import { Send, CheckCircle2, Copy, MapPin, Mail, Phone, ArrowUpRight, Clock, ShieldCheck } from 'lucide-react';
+import { STUDIO_CONTACT } from '../data/agencyData';
+import { Send, CheckCircle2, Copy, MapPin, Mail, Phone, ArrowUpRight, Clock, Instagram, Youtube } from 'lucide-react';
 
 interface ContactFooterProps {
   prefilledScope?: string;
@@ -94,29 +95,86 @@ export const ContactFooter: React.FC<ContactFooterProps> = ({ prefilledScope, pr
             </p>
           </div>
 
-          {/* Physical Coordinates */}
-          <div className="space-y-3 pt-1 sm:pt-2 font-mono-custom text-xs">
+          {/* Physical Coordinates, Direct Lines & Official Socials */}
+          <div className="space-y-4 pt-1 sm:pt-2 font-mono-custom text-xs">
+            {/* Studio Location */}
             <div className="flex items-start gap-2 text-black">
               <MapPin className="w-4 h-4 text-[#FF4400] shrink-0 mt-0.5" />
               <div>
                 <span className="font-bold block">PUNE HQ & SOUNDSTAGE</span>
-                <span className="text-neutral-700">Odd Mango Studios, 404 Deccan Arcade, Koregaon Park / Pune 411001, India</span>
+                <span className="text-neutral-700">{STUDIO_CONTACT.location}</span>
               </div>
             </div>
 
-            <div className="flex items-start gap-2 text-black">
-              <MapPin className="w-4 h-4 text-[#38BDF8] shrink-0 mt-0.5" />
-              <div>
-                <span className="font-bold block">TOKYO SATELLITE</span>
-                <span className="text-neutral-700">Studio Mango Shibuya, Jingumae 3-Chome, Tokyo 150-0001, Japan</span>
+            {/* Direct Email */}
+            <div className="flex items-center gap-2 text-neutral-900 bg-white/60 p-2.5 rounded-xl border border-black/10">
+              <Mail className="w-4 h-4 text-[#FF4400] shrink-0" />
+              <div className="min-w-0">
+                <span className="text-[10px] text-neutral-500 font-bold block">STUDIO INQUIRIES</span>
+                <a
+                  href={`mailto:${STUDIO_CONTACT.email}`}
+                  className="font-bold hover:text-[#FF4400] underline truncate block"
+                >
+                  {STUDIO_CONTACT.email}
+                </a>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 pt-1 sm:pt-2 text-neutral-800">
-              <Mail className="w-4 h-4 text-black" />
-              <a href="mailto:direct@oddmango.media" className="underline font-bold hover:text-[#FF4400]">
-                direct@oddmango.media
-              </a>
+            {/* Direct Phone Lines */}
+            <div className="bg-white/60 p-2.5 rounded-xl border border-black/10 space-y-1.5">
+              <div className="flex items-center gap-2 text-neutral-900">
+                <Phone className="w-4 h-4 text-[#00D084] shrink-0" />
+                <span className="text-[10px] text-neutral-500 font-bold">DIRECT PRODUCTION PHONES</span>
+              </div>
+              <div className="flex items-center gap-3 pl-6 flex-wrap">
+                <a
+                  href={`tel:${STUDIO_CONTACT.phone1.tel}`}
+                  className="font-bold hover:text-[#FF4400] underline flex items-center gap-1"
+                >
+                  <span>{STUDIO_CONTACT.phone1.display}</span>
+                </a>
+                <span className="text-neutral-400">•</span>
+                <a
+                  href={`tel:${STUDIO_CONTACT.phone2.tel}`}
+                  className="font-bold hover:text-[#FF4400] underline flex items-center gap-1"
+                >
+                  <span>{STUDIO_CONTACT.phone2.display}</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Official Social Channels */}
+            <div className="pt-2 border-t-2 border-black/20 space-y-2">
+              <span className="text-[10px] uppercase font-bold text-neutral-700 block tracking-wider">
+                OFFICIAL SOCIALS & CHANNELS
+              </span>
+              <div className="grid grid-cols-1 xs:grid-cols-2 gap-2">
+                <a
+                  href={STUDIO_CONTACT.instagram.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-2.5 bg-black text-white rounded-xl font-bold hover:bg-[#FF4400] transition-colors shadow-sm group"
+                >
+                  <div className="flex items-center gap-2">
+                    <Instagram className="w-4 h-4 text-[#FFDE99]" />
+                    <span className="text-[11px]">{STUDIO_CONTACT.instagram.handle}</span>
+                  </div>
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform text-neutral-400 group-hover:text-white" />
+                </a>
+
+                <a
+                  href={STUDIO_CONTACT.youtube.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-2.5 bg-[#FF0000] text-white rounded-xl font-bold hover:bg-black transition-colors shadow-sm group"
+                >
+                  <div className="flex items-center gap-2">
+                    <Youtube className="w-4 h-4 text-white" />
+                    <span className="text-[11px]">{STUDIO_CONTACT.youtube.handle}</span>
+                  </div>
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform text-white/80 group-hover:text-white" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -319,6 +377,55 @@ export const ContactFooter: React.FC<ContactFooterProps> = ({ prefilledScope, pr
               </motion.form>
             )}
           </AnimatePresence>
+        </div>
+      </div>
+
+      {/* Quick Direct Connect Strip */}
+      <div className="bg-black text-white border-2 border-black rounded-xl p-3 sm:p-4 flex flex-col md:flex-row items-center justify-between gap-3 font-mono-custom text-xs shadow-brutal-sm">
+        <div className="flex items-center gap-3 flex-wrap justify-center md:justify-start">
+          <span className="text-[#FF4400] font-black">CONNECT DIRECT:</span>
+          <a
+            href={`mailto:${STUDIO_CONTACT.email}`}
+            className="text-white hover:text-[#FFDE99] underline transition-colors"
+          >
+            {STUDIO_CONTACT.email}
+          </a>
+          <span className="text-neutral-600 hidden sm:inline">•</span>
+          <a
+            href={`tel:${STUDIO_CONTACT.phone1.tel}`}
+            className="text-neutral-300 hover:text-white transition-colors"
+          >
+            {STUDIO_CONTACT.phone1.display}
+          </a>
+          <span className="text-neutral-600">/</span>
+          <a
+            href={`tel:${STUDIO_CONTACT.phone2.tel}`}
+            className="text-neutral-300 hover:text-white transition-colors"
+          >
+            {STUDIO_CONTACT.phone2.display}
+          </a>
+        </div>
+
+        <div className="flex items-center gap-3 shrink-0">
+          <a
+            href={STUDIO_CONTACT.instagram.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-[#FFDE99] hover:text-white font-bold transition-colors"
+          >
+            <Instagram className="w-3.5 h-3.5" />
+            <span>{STUDIO_CONTACT.instagram.handle}</span>
+          </a>
+          <span className="text-neutral-600">•</span>
+          <a
+            href={STUDIO_CONTACT.youtube.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-[#FF4400] hover:text-white font-bold transition-colors"
+          >
+            <Youtube className="w-3.5 h-3.5" />
+            <span>{STUDIO_CONTACT.youtube.handle}</span>
+          </a>
         </div>
       </div>
 

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="100%" height="100%" fill="none">
+  <!-- Odd Mango Studio Signature Neo-Brutalist Crest -->
+  <g transform="translate(10, 10)">
+    <!-- Shadow block -->
+    <rect x="6" y="6" width="88" height="88" rx="20" fill="#000000" />
+    <!-- Main mango badge -->
+    <rect x="0" y="0" width="88" height="88" rx="20" fill="#FF4400" stroke="#000000" stroke-width="4" />
+    
+    <!-- Stylized Mango silhouette -->
+    <!-- Mango body -->
+    <path d="M44 20 C62 20 72 32 72 50 C72 68 56 78 42 78 C28 78 18 66 18 48 C18 30 32 20 44 20 Z" fill="#FFDE99" stroke="#000000" stroke-width="3" />
+    <!-- Mango leaf -->
+    <path d="M44 14 C48 8 58 10 60 16 C54 18 48 18 44 14 Z" fill="#00D084" stroke="#000000" stroke-width="2.5" />
+    <!-- Cheek blush highlight -->
+    <circle cx="34" cy="46" r="4" fill="#FF4400" />
+    <circle cx="54" cy="46" r="4" fill="#FF4400" />
+    <!-- Neo-brutalist wink smile -->
+    <path d="M38 56 Q44 62 50 56" stroke="#000000" stroke-width="3" stroke-linecap="round" fill="none" />
+  </g>
+
+  <!-- Typography Block -->
+  <g transform="translate(116, 20)">
+    <!-- Japanese Katakana Eyebrow -->
+    <text x="2" y="16" font-family="'Space Grotesk', 'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#FF4400" letter-spacing="2">
+      奇妙なマンゴー // MEDIA STUDIO
+    </text>
+    
+    <!-- Bold Display Logo Name -->
+    <text x="0" y="52" font-family="'Syne', 'Space Grotesk', sans-serif" font-size="38" font-weight="900" fill="#000000" letter-spacing="-1.5">
+      ODD MANGO
+    </text>
+    <text x="250" y="34" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="800" fill="#FF4400">
+      ®
+    </text>
+
+    <!-- Subtitle / Location -->
+    <text x="2" y="74" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#555555" letter-spacing="1.5">
+      FULL-CYCLE CREATIVE &amp; PRODUCTION HOUSE
+    </text>
+  </g>
+</svg>
