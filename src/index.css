@@ -1,0 +1,385 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-syne {
+    font-family: 'Syne', sans-serif;
+  }
+  .font-space {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .font-mono-custom {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .font-sans-custom {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .shadow-brutal-sm {
+    box-shadow: 2px 2px 0 #000;
+  }
+  .shadow-brutal {
+    box-shadow: 3px 3px 0 #000;
+  }
+  .shadow-brutal-lg {
+    box-shadow: 4px 4px 0 #000;
+  }
+  .shadow-brutal-xl {
+    box-shadow: 5px 5px 0 #000;
+  }
+  @media (min-width: 640px) {
+    .shadow-brutal {
+      box-shadow: 4px 4px 0 #000;
+    }
+    .shadow-brutal-lg {
+      box-shadow: 6px 6px 0 #000;
+    }
+    .shadow-brutal-xl {
+      box-shadow: 10px 10px 0 #000;
+    }
+  }
+  .shadow-brutal-white {
+    box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.9);
+  }
+  .shadow-brutal-orange {
+    box-shadow: 4px 4px 0 #FF4400;
+  }
+  @media (min-width: 640px) {
+    .shadow-brutal-orange {
+      box-shadow: 6px 6px 0 #FF4400;
+    }
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Background grid pattern */
+.bg-grid-dark {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+.bg-dots-pattern {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.15) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+}
+
+/* Custom ticker animation */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker 26s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+/* Custom neo-brutalist animated stripes for loading bar */
+@keyframes brutal-stripes {
+  0% { background-position: 0 0; }
+  100% { background-position: 32px 0; }
+}
+
+.animate-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(0, 0, 0, 0.15) 0px,
+    rgba(0, 0, 0, 0.15) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  background-size: 32px 32px;
+  animation: brutal-stripes 0.8s linear infinite;
+}
+
+/* ----------------------------------------------------
+   EXACT REFERENCE HTML 3D STACK PERSPECTIVE ANIMATION
+   ---------------------------------------------------- */
+.om-stack-container {
+  perspective: 1200px;
+  width: 100%;
+  max-width: 1040px;
+  margin: 10px auto 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 6px;
+  height: 615px;
+  min-height: 615px;
+  max-height: 615px;
+  box-sizing: border-box;
+}
+
+.om-stack-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #FFDE99;
+  margin-bottom: 20px;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.om-pane {
+  width: 100%;
+  height: 160px;
+  background: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 12px;
+  transform-origin: top center;
+  transform: rotateX(14deg);
+  margin-bottom: -40px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  will-change: transform, height, margin-bottom, box-shadow;
+}
+
+.om-pane:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 769px) and (hover: hover) {
+  .om-pane:hover {
+    transform: rotateX(0deg) translateY(-8px);
+    height: 220px;
+    margin-bottom: -10px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    z-index: 40 !important;
+  }
+
+  .om-pane:last-child:hover {
+    margin-bottom: 0;
+  }
+}
+
+/* Mobile responsive tuning for small & tablet screens */
+@media (max-width: 768px) {
+  .om-stack-container {
+    perspective: none;
+    height: auto;
+    min-height: auto;
+    max-height: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 0;
+    margin-bottom: 12px;
+  }
+  .om-pane {
+    height: auto;
+    min-height: auto;
+    transform: none !important;
+    margin-bottom: 0 !important;
+    border-radius: 14px;
+    box-shadow: 3px 3px 0 #000 !important;
+  }
+  .om-pane:hover {
+    transform: none !important;
+    height: auto !important;
+    margin-bottom: 0 !important;
+  }
+  .om-pane:last-child {
+    margin-bottom: 0 !important;
+  }
+  .om-pane:last-child:hover {
+    margin-bottom: 0 !important;
+  }
+  .om-pane-header {
+    padding: 0 12px;
+    height: 32px;
+    font-size: 0.62rem;
+    gap: 8px;
+  }
+  .om-pane-body {
+    height: auto;
+    min-height: auto;
+    padding: 16px 14px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  @media (min-width: 480px) {
+    .om-pane-body {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+  }
+  .om-pane-body h3 {
+    font-size: 1.3rem;
+    line-height: 1.1;
+  }
+  .om-pane-body p {
+    font-size: 0.78rem;
+    max-width: 100%;
+    margin-top: 2px;
+    line-height: 1.4;
+    color: #4b5563;
+  }
+  .om-pane-badge {
+    padding: 5px 12px;
+    font-size: 0.68rem;
+    flex-shrink: 0;
+    align-self: flex-start;
+  }
+  @media (min-width: 480px) {
+    .om-pane-badge {
+      align-self: auto;
+    }
+  }
+}
+
+.om-pane-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 34px;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.15);
+  padding: 0 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: #ffffff;
+}
+
+.om-pane-body {
+  height: calc(100% - 34px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.om-pane-body h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #000000;
+  line-height: 1.1;
+}
+
+.om-pane-body p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: #555555;
+  max-width: 460px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .om-pane-body {
+    padding: 0 16px;
+  }
+  .om-pane-body h3 {
+    font-size: 1.5rem;
+  }
+  .om-pane-body p {
+    font-size: 0.78rem;
+    max-width: 250px;
+  }
+}
+
+.om-pane-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Individual Pane Themes & Interactive Hover Accents */
+.pane-branding .om-pane-badge {
+  color: #FF4400;
+  background: rgba(255, 68, 0, 0.1);
+}
+.pane-production .om-pane-badge {
+  color: #0284c7;
+  background: rgba(56, 189, 248, 0.12);
+}
+.pane-social .om-pane-badge {
+  color: #059669;
+  background: rgba(0, 208, 132, 0.12);
+}
+.pane-events .om-pane-badge {
+  color: #7c3aed;
+  background: rgba(192, 132, 252, 0.14);
+}
+
+.pane-branding:hover {
+  border-color: #FF4400;
+  box-shadow: 0 25px 50px rgba(255, 68, 0, 0.28);
+}
+.pane-branding:hover .om-pane-badge {
+  background: #FF4400;
+  color: #ffffff;
+  transform: scale(1.1) rotate(5deg);
+}
+
+.pane-production:hover {
+  border-color: #38BDF8;
+  box-shadow: 0 25px 50px rgba(56, 189, 248, 0.28);
+}
+.pane-production:hover .om-pane-badge {
+  background: #38BDF8;
+  color: #ffffff;
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.pane-social:hover {
+  border-color: #00D084;
+  box-shadow: 0 25px 50px rgba(0, 208, 132, 0.28);
+}
+.pane-social:hover .om-pane-badge {
+  background: #00D084;
+  color: #ffffff;
+  transform: scale(1.1) rotate(5deg);
+}
+
+.pane-events:hover {
+  border-color: #C084FC;
+  box-shadow: 0 25px 50px rgba(192, 132, 252, 0.28);
+}
+.pane-events:hover .om-pane-badge {
+  background: #C084FC;
+  color: #ffffff;
+  transform: scale(1.1) rotate(-5deg);
+}
+
+/* Precise subtle tagline typography */
+.om-tagline-sm {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #737373;
+}
+
