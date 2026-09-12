@@ -153,26 +153,28 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({ onOpenContact }) => {
               className="space-y-6"
             >
               {/* Active Phase Badge & Title */}
-              <div className="space-y-2 pb-4 border-b-2 border-black">
-                <div className="flex items-center justify-between font-mono-custom text-xs">
+              <div className="space-y-3 pb-4 border-b-2 border-black">
+                <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 font-mono-custom text-xs">
                   <span
-                    className="px-3 py-1 rounded-md font-black border border-black shadow-brutal-sm"
+                    className="inline-flex items-center px-2.5 py-1 sm:px-3 sm:py-1 rounded-md font-black text-[11px] sm:text-xs border-2 border-black shadow-[2px_2px_0px_#000000] whitespace-nowrap"
                     style={{ backgroundColor: selectedPhase.accentColor, color: '#000' }}
                   >
                     PHASE {selectedPhase.phaseNumber} INSPECTION
                   </span>
-                  <span className="flex items-center gap-1 font-bold text-neutral-600">
-                    <Clock className="w-3.5 h-3.5" />
-                    <span>TIMEFRAME: {isRushMode ? '2 Weeks (Rush)' : selectedPhase.duration}</span>
-                  </span>
+                  <div className="flex items-center gap-1.5 font-bold text-neutral-700 text-[11px] sm:text-xs whitespace-nowrap shrink-0 bg-neutral-100 px-2.5 py-1 rounded-md border border-neutral-300">
+                    <Clock className="w-3.5 h-3.5 text-neutral-600 shrink-0" />
+                    <span>TIMEFRAME: <span className="text-black font-extrabold">{isRushMode ? '2 Wks (Rush)' : selectedPhase.duration}</span></span>
+                  </div>
                 </div>
 
-                <h3 className="font-syne text-2xl sm:text-3xl font-black text-black">
-                  {selectedPhase.title}
-                </h3>
-                <p className="font-mono-custom text-xs text-neutral-500 font-bold uppercase">
-                  {selectedPhase.subtitle}
-                </p>
+                <div className="space-y-1 pt-1">
+                  <h3 className="font-syne text-2xl sm:text-3xl font-black text-black tracking-tight leading-tight">
+                    {selectedPhase.title}
+                  </h3>
+                  <p className="font-mono-custom text-[11px] sm:text-xs text-neutral-500 font-bold uppercase tracking-wider">
+                    {selectedPhase.subtitle}
+                  </p>
+                </div>
               </div>
 
               {/* Summary Narrative */}

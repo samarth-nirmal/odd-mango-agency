@@ -9,7 +9,19 @@ interface EventsViewProps {
 }
 
 export const EventsView: React.FC<EventsViewProps> = ({ onOpenContact }) => {
-  const [activeBar, setActiveBar] = useState<string>(EVENT_PROJECTS[0].id);
+  // Allow independent toggling so expanding a card never collapses a card above it or pulls this card upwards
+  const [openBars, setOpenBars] = useState<Record<string, boolean>>({
+    [EVENT_PROJECTS[0].id]: true,
+  });
+
+  const toggleBar = (id: string) => {
+    const isCurrentlyOpen = !!openBars[id];
+    soundFx.playClick(isCurrentlyOpen ? 400 : 560);
+    setOpenBars((prev) => ({
+      ...prev,
+      [id]: !isCurrentlyOpen,
+    }));
+  };
 
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
@@ -33,16 +45,13 @@ export const EventsView: React.FC<EventsViewProps> = ({ onOpenContact }) => {
       {/* The Expandable Event Bars */}
       <section className="space-y-4">
         {EVENT_PROJECTS.map((event) => {
-          const isOpen = activeBar === event.id;
+          const isOpen = !!openBars[event.id];
 
           return (
             <div
               key={event.id}
-              onClick={() => {
-                soundFx.playClick(isOpen ? 400 : 560);
-                setActiveBar(isOpen ? '' : event.id);
-              }}
-              className="border-3 border-black rounded-2xl cursor-pointer transition-all duration-300 overflow-hidden shadow-brutal hover:shadow-brutal-xl"
+              onClick={() => toggleBar(event.id)}
+              className="border-3 border-black rounded-2xl cursor-pointer transition-shadow duration-200 overflow-hidden shadow-brutal hover:shadow-brutal-xl"
               style={{ backgroundColor: event.themeColor, color: event.textColor }}
             >
               {/* Header Bar Area */}
@@ -72,7 +81,7 @@ export const EventsView: React.FC<EventsViewProps> = ({ onOpenContact }) => {
                   </span>
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-black bg-black text-white flex items-center justify-center font-mono-custom text-xs sm:text-sm font-bold shrink-0"
                   >
                     {isOpen ? '−' : '+'}
@@ -90,18 +99,19 @@ export const EventsView: React.FC<EventsViewProps> = ({ onOpenContact }) => {
                       height: 'auto',
                       opacity: 1,
                       transition: {
-                        height: { duration: 0.42, ease: [0.16, 1, 0.3, 1] },
-                        opacity: { duration: 0.3, delay: 0.08 },
+                        height: { duration: 0.38, ease: [0.16, 1, 0.3, 1] },
+                        opacity: { duration: 0.25, delay: 0.05 },
                       },
                     }}
                     exit={{
                       height: 0,
                       opacity: 0,
                       transition: {
-                        height: { duration: 0.32, ease: [0.16, 1, 0.3, 1] },
+                        height: { duration: 0.28, ease: [0.16, 1, 0.3, 1] },
                         opacity: { duration: 0.15 },
                       },
                     }}
+                    style={{ transformOrigin: 'top center' }}
                     className="overflow-hidden"
                   >
                     <div className="px-4 pb-6 sm:px-8 sm:pb-8 space-y-5 sm:space-y-6 border-t-2 border-black/20 pt-5 sm:pt-6">
